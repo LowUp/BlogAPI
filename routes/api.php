@@ -11,14 +11,16 @@ Route::get('/user', function (Request $request) {
 
 // Blog API endpoints to retrieve data from the database.
 Route::apiResource('posts', PostController::class)
-->only([
-    'index', 'show'
-]);
+    ->only([
+        'index',
+        'show'
+    ]);
 
 Route::apiResource('posts', PostController::class)
-->except([
-     'index', 'show'
-])
-->middleware(EnsureUserIsAuthenticated::class);
+    ->except([
+        'index',
+        'show'
+    ])
+    ->middleware(EnsureUserIsAuthenticated::class);
 
 
