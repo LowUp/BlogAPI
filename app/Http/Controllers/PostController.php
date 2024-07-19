@@ -9,7 +9,14 @@ use Illuminate\Support\Facades\Log;
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *     path="/api/posts",
+     *     tags={"Posts"},
+     *     operationId="show",
+     *     summary="Retrieve all posts inside the database",
+     *     @OA\Response(response="200", description="Success"),
+     *     security={{"bearerAuth":{}}}
+     * )
      */
     public function index()
     {

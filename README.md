@@ -37,7 +37,30 @@ These instructions will get you a copy of the project up and running on your loc
 7. **Project Url**
     ````bash
     http://127.0.0.1:8000
+8. **Test API with Swagger:**
+    ````bash
+    curl http://127.0.0.1:8000/api/documentation
 ### Running projects
 1. **Run the tests:**
     ````bash
     php artisan test
+
+## API Endpoints
+### The API provides the following endpoints:
+* GET /api/posts: Retrieve a list of all posts.
+* GET /api/posts/{id}: Retrieve a specific post by its ID.
+* POST /api/posts: Create a new post.
+* PUT /api/posts/{id}: Update an existing post.
+* DELETE /api/posts/{id}: Delete a post.
+
+### Authentication:
+#### Example Request (using curl):
+    ```bash
+    curl --location '127.0.0.1:8001/api/posts' \
+    --header 'Content-Type: application/json' \
+    --header 'Authorization: Basic dGVzdDp0ZXN0' \
+    --data '{
+        "title": "Title 1",
+        "content": "content 1",
+        "author": "author 1"
+    }'

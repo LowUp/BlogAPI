@@ -1,0 +1,43 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger with Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/posts": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "Retrieve all posts inside the database",
+                "operationId": "show",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Posts",
+            "description": "Posts"
+        }
+    ]
+}
