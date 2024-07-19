@@ -63,3 +63,8 @@ These instructions will get you a copy of the project up and running on your loc
         "content": "content 1",
         "author": "author 1"
     }'
+### Test scheduling:
+* I set the background job to ``everyMinute()``
+
+```bash
+    php artisan schedule:work	
