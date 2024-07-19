@@ -34,14 +34,14 @@ class PostController extends Controller
         Log::info("Test");
 
         $validator = $request->validate([
-            "title"=> "required|string|max:255",
-            "content"=> "required|string",
-            "author"=> "required|string|max:255",
+            "title" => "required|string|max:255",
+            "content" => "required|string",
+            "author" => "required|string|max:255",
         ]);
 
         $post = Post::create($validator);
 
-        return response()->json(["message"=> "Post sucefully created",$post], 201);
+        return response()->json(["message" => "Post sucefully created", $post], 201);
     }
 
     /**
@@ -51,8 +51,8 @@ class PostController extends Controller
     {
         $selectedPost = Post::find($id);
 
-        if ( is_null($selectedPost) ) {
-            return response()->json(["message"=> "Post not found"], 404);
+        if (is_null($selectedPost)) {
+            return response()->json(["message" => "Post not found"], 404);
         }
 
         return response()->json($selectedPost, 200);
@@ -72,15 +72,15 @@ class PostController extends Controller
 
         $selectedPost = Post::find($id);
 
-        if ( is_null($selectedPost) ) {
-            return response()->json(['message'=> 'Post not found'], 404);
+        if (is_null($selectedPost)) {
+            return response()->json(['message' => 'Post not found'], 404);
         }
 
         // Log::info('Post updated', $selectedPost->update($request->all()));
         $selectedPost->update($validator);
 
 
-        return response()->json(["message"=> "Post sucefully updated" ,$selectedPost], 200);
+        return response()->json(["message" => "Post sucefully updated", $selectedPost], 200);
     }
 
     /**
@@ -90,12 +90,12 @@ class PostController extends Controller
     {
         $selectedPost = Post::find($id);
 
-        if ( is_null($selectedPost) ) {
-            return response()->json(['message'=> 'Post not found'], 404);
+        if (is_null($selectedPost)) {
+            return response()->json(['message' => 'Post not found'], 404);
         }
 
         $selectedPost->delete();
 
-        return response()->json(["message"=> "Post sucefully deleted", $selectedPost], 200);
+        return response()->json(["message" => "Post sucefully deleted", $selectedPost], 200);
     }
 }

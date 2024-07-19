@@ -15,7 +15,7 @@ class EnsureUserIsAuthenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!$request->header("Authorization")) {
+        if (!$request->header("Authorization")) {
 
             return response()->json("Unauthorized", Response::HTTP_UNAUTHORIZED);
         }

@@ -5,11 +5,12 @@ namespace Tests\Unit;
 // use PHPUnit\Framework\TestCase;
 use Tests\TestCase;
 use Illuminate\Testing\Fluent\AssertableJson;
+
 // use App\Models\Post;
 
 class PostApiTest extends TestCase
 {
-    protected int $testId = 39;
+    protected int $testId = 40;
     /**
      * A basic unit test example.
      */
@@ -31,14 +32,16 @@ class PostApiTest extends TestCase
 
         $response = $this->withHeaders([
             'Authorization' => 'Basic ' . base64_encode('test:test'),
-        ])->postJson('api/posts', $testInput); 
+        ])->postJson('api/posts', $testInput);
 
         $response
             ->assertStatus(201)
-            ->assertJson([
-                'message' => 'Post sucefully created']
+            ->assertJson(
+                [
+                    'message' => 'Post sucefully created'
+                ]
             );
-        
+
     }
 
     /**
@@ -47,11 +50,12 @@ class PostApiTest extends TestCase
     public function test_get_post_api(): void
     {
 
-        $response = $this->getJson('api/posts/'.$this->testId);
+        $response = $this->getJson('api/posts/' . $this->testId);
 
         $response
             ->assertStatus(200)
-            ->assertJson(fn (AssertableJson $json) =>
+            ->assertJson(
+                fn(AssertableJson $json) =>
                 $json->where('id', $this->testId)
                     ->where('title', 'Test Title')
                     ->where('content', 'Test Content')
@@ -72,7 +76,7 @@ class PostApiTest extends TestCase
 
         $response = $this->withHeaders([
             'Authorization' => 'Basic ' . base64_encode('test:test'),
-        ])->postJson('api/posts', $testInput); 
+        ])->postJson('api/posts', $testInput);
 
         $response
             ->assertStatus(422);
@@ -81,7 +85,7 @@ class PostApiTest extends TestCase
     /**
      * Test the authentication for posts api.
      */
-    public function test_auth_post_api(): void 
+    public function test_auth_post_api(): void
     {
         $testInput = [
             'title' => 'Test Title',
@@ -89,7 +93,7 @@ class PostApiTest extends TestCase
             'author' => 'Test Author'
         ];
 
-        $response = $this->postJson('api/posts', $testInput); 
+        $response = $this->postJson('api/posts', $testInput);
 
         $response
             ->assertStatus(401);
