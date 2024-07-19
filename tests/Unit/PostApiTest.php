@@ -10,7 +10,7 @@ use Illuminate\Testing\Fluent\AssertableJson;
 
 class PostApiTest extends TestCase
 {
-    protected int $testId = 40;
+    protected int $testId = 1;
     /**
      * A basic unit test example.
      */

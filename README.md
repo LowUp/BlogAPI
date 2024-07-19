@@ -44,7 +44,6 @@ These instructions will get you a copy of the project up and running on your loc
 1. **Run the tests:**
     ````bash
     php artisan test
-
 ## API Endpoints
 ### The API provides the following endpoints:
 * GET /api/posts: Retrieve a list of all posts.
